@@ -9,12 +9,18 @@
 */
 
 #include <iostream>
+#include <fstream>
+#include <sstream>
 #include <vector>
+#include <algorithm>
+
 using namespace std;
 
 int main();
 int calcMean(int studentAbility, int subjectDifficulty);
-string calcOverallMark(int studentMark);
+int calcStdDeviation(int studentConsistency, int subjectVariability);
+int calcOverallMark(int mean, int stdDeviation);
+string calcGrade(int studentMark);
 
 enum Constants {
 	FIFTY = 50,
@@ -23,14 +29,18 @@ enum Constants {
 	EIGHTY_FIVE = 85
 };
 
-struct Subject {
-private:
-	string name;
+class Subject {
+public:
+	std::string name;
 	int difficulty;
 	int variability;
-public:
+	Subject(std::string name = "NULL", int difficulty = 0, int variability = 0) {
+		this->name = name;
+		this->difficulty = difficulty;
+		this->variability = variability;
+	}
 	// Mutators
-	void setSubjectName(string n) {
+	void setSubjectName(std::string n) {
 		name = n;
 	}
 	void setSubjectDifficulty(int diff) {
@@ -40,7 +50,7 @@ public:
 		variability = vari;
 	}
 	// Accessors
-	string getSubjectName() {
+	std::string getSubjectName() {
 		return name;
 	}
 	int getSubjectDifficulty() {
@@ -49,18 +59,23 @@ public:
 	int getSubjectVariability() {
 		return variability;
 	}
+	std::string toString() {
+		return "Subject Name: " + name + "\nDifficulty: " + std::to_string(difficulty) + "\nVariability: " + std::to_string(variability) + "\n\n";
+	}
 };
 
 struct Student {
-private:
-	string name, programName;
+public:
+	std::string name, programName;
 	int studentID;
 	int ability;
 	int consistency;
 	vector<int> subjectsList;
-public:
+
+
+
 	// Mutators
-	void setStudentName(string n) {
+	void setStudentName(std::string n) {
 		name = n;
 	}
 	void setStudentID(int id) {
@@ -72,14 +87,14 @@ public:
 	void setStudentConsistency(int con) {
 		consistency = con;
 	}
-	void setStudentProgram(string progn) {
+	void setStudentProgram(std::string progn) {
 		programName = progn;
 	}
-	void setStudentSubjects(vector<int> subj) {
+	void setStudentSubjects(std::vector<int> subj) {
 		subjectsList = subj;
 	}
 	// Accessors
-	string getStudentName() {
+	std::string getStudentName() {
 		return name;
 	}
 	int getStudentID() {
@@ -91,7 +106,13 @@ public:
 	int getStudentConsistency() {
 		return consistency;
 	}
-	vector<int> getStudentSubjects() {
+	std::vector<int> getStudentSubjects() {
 		return subjectsList;
 	}
+	std::string toString() const {
+		return "Student Name: " + name + "\nStudent ID: " + std::to_string(studentID) + "\nStudent Ability: " + std::to_string(ability) + "\nStudent Consistency: " + std::to_string(consistency) + "\nProgram Name: " + programName + "\n";
+	}
 };
+
+std::vector<Student> createStudents();
+void createSubjects();
