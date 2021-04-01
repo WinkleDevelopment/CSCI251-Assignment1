@@ -31,7 +31,6 @@ void createSubjects() {
     fstream subjectFile(fileName);
 
     int x = 0;
-    //Subject subjects[10];
 
     if (subjectFile.is_open()) {
 
@@ -41,10 +40,8 @@ void createSubjects() {
         {
             std::istringstream iss(line);
 
-            //A new student data member is created
             Subject tempSubject;
 
-            //getline(iss, tempSubject.name, ',');
             getline(iss, tempSubject.name, ',');
 
 
@@ -53,9 +50,6 @@ void createSubjects() {
 
             getline(iss, str, ',');
             tempSubject.variability = stoi(str);
-
-            //The new struct data member is added to the vector and returned for further use.
-            //subjectList.push_back(std::move(tempSubject));
 
             subjects[x] = tempSubject;
             x++;
@@ -160,45 +154,51 @@ void outputGrades() {
 
         for (Student student : students) {
             // Prints Student Details
-            OutputFile << student.toString();
-
+            OutputFile << student.toString() << std::endl;;
+            size_t cap = 0;
             for (int x : student.getStudentSubjects()) {
 
-                    // Gets Mean and Standard Deviation
-                    double mean = calcMean(student.getStudentAbility(), subjects[x].getSubjectDifficulty());
-                    double standardDeviation = calcStdDeviation(student.getStudentConsistency(), subjects[x].getSubjectVariability());
-                    int cnut = 1;
+                auto var = 0;
+                var = student.getStudentSubjects().size();
+                cap = cap++;
 
-                    // Creates Random Number
-                    default_random_engine generator(time(0));
-                    normal_distribution<double> dist(mean, standardDeviation);
-                    int mark = round((int)dist(generator));
+                // Gets Mean and Standard Deviation
+                double mean = calcMean(student.getStudentAbility(), subjects[x].getSubjectDifficulty());
+                double standardDeviation = calcStdDeviation(student.getStudentConsistency(), subjects[x].getSubjectVariability());
+                int cnut = 1;
 
-                    while (cnut <= 3)
-                    {
-                        OutputFile << "Subject: " << subjects[x].getSubjectName() << " " << x << "\nAttempt Number: " << cnut << "\nMark: " << mark << "\nStudent: " << student.getStudentName() << std::endl;
+                // Creates Random Number
+                default_random_engine generator(time(0));
+                normal_distribution<double> dist(mean, standardDeviation);
+                int mark = round((int)dist(generator));
 
-                        // Check if Grade is Passable
-                        if (cnut == 3 && mark < 50) {
+                while (cnut <= 3)
+                {
+                    OutputFile << "Subject: " << subjects[x].getSubjectName() << " " << x << "\nAttempt Number: " << cnut << "\nMark: " << mark << "\nStudent: " << student.getStudentName() << std::endl;
 
-                            OutputFile << "Overall Grade: Fail" << std::endl;
-                            OutputFile << "Exceeded the three attempt limit with an overall fail mark. The student has been excluded from college." << std::endl << std::endl;
-                            vector<int> deleteStudent = {};
-                            student.setStudentSubjects(deleteStudent);
-                        }
-                        else if (cnut <= 3 && mark >= 50) {
-                            OutputFile << "Grade: " << calcGrade(mark) << std::endl << std::endl;
-                            OutputFile << "Overall Grade: Pass" << std::endl << std::endl;
-                            cnut = 99; // Passes and Stops Loop
-                        }
-                        else {
-                            OutputFile << "Grade: Fail" << std::endl << std::endl;
-                            mark = round(dist(generator)); // Resets Number
-                        }
-                        cnut++;
+                    // Check if Grade is Passable
+                    if (cnut == 3 && mark < 50) {
+
+                        OutputFile << "Overall Grade: Fail" << std::endl;
+                        OutputFile << "Exceeded the three attempt limit with an overall fail mark. The student has been excluded from college." << std::endl << std::endl;
+                        vector<int> deleteStudent = {};
+                        student.setStudentSubjects(deleteStudent);
                     }
+                    else if (cnut <= 3 && mark >= 50) {
+                        OutputFile << "Grade: " << calcGrade(mark) << std::endl << std::endl;
+                        // Checks if its last subject for overall grade
+                        if (student.getStudentSubjects().size() == cap) {
+                            OutputFile << "Overall Grade: Pass" << std::endl << std::endl;
+                        }
+                        cnut = 99; // Passes and Stops Loop
+                    }
+                    else {
+                        OutputFile << "Grade: Fail" << std::endl << std::endl;
+                        mark = round(dist(generator)); // Resets Number
+                    }
+                    cnut++;
+                }
              }
-
          } 
     } else {
         cout << "File doesn't exist!";

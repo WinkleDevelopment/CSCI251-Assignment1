@@ -1,28 +1,36 @@
+Student Name: Average Ant
+Student ID: 204932
+Student Ability: 50
+Student Consistency: 5
+Program Name: Short course
+
 Subject: Archery 0
 Attempt Number: 1
-Mark: 65
+Mark: 71
 Student: Average Ant
 Grade: Good
 
 Subject: Basic Bouncing 1
 Attempt Number: 1
-Mark: 60
+Mark: 63
 Student: Average Ant
 Grade: Pass
 
+Overall Grade: Pass
+
+Student Name: Brilliant Bison
+Student ID: 234543
+Student Ability: 80
+Student Consistency: 3
+Program Name: Bachelor of Bounciness
+
 Subject: Counting for Animals 2
 Attempt Number: 1
-Mark: 80
+Mark: 85
 Student: Brilliant Bison
 Grade: Good
 
 Subject: Finding Friends 5
-Attempt Number: 1
-Mark: 70
-Student: Brilliant Bison
-Grade: Good
-
-Subject: Digging 3
 Attempt Number: 1
 Mark: 76
 Student: Brilliant Bison
@@ -30,114 +38,110 @@ Grade: Good
 
 Subject: Digging 3
 Attempt Number: 1
-Mark: 56
+Mark: 80
+Student: Brilliant Bison
+Grade: Good
+
+Overall Grade: Pass
+
+Student Name: Consistent Canary
+Student ID: 123456
+Student Ability: 60
+Student Consistency: 1
+Program Name: Diploma of Doggeral
+
+Subject: Digging 3
+Attempt Number: 1
+Mark: 58
 Student: Consistent Canary
 Grade: Pass
 
 Subject: Gathering Greenery 6
 Attempt Number: 1
-Mark: 45
+Mark: 46
 Student: Consistent Canary
 Grade: Fail
 
 Subject: Gathering Greenery 6
 Attempt Number: 2
-Mark: 45
+Mark: 46
 Student: Consistent Canary
 Grade: Fail
 
 Subject: Gathering Greenery 6
 Attempt Number: 3
-Mark: 43
+Mark: 45
 Student: Consistent Canary
+Overall Grade: Fail
 Exceeded the three attempt limit with an overall fail mark. The student has been excluded from college.
+
+Student Name: Dusty the Dinosaur
+Student ID: 1
+Student Ability: 65
+Student Consistency: 3
+Program Name: Master of Extinction
 
 Subject: Basic Bouncing 1
 Attempt Number: 1
-Mark: 75
+Mark: 76
 Student: Dusty the Dinosaur
 Grade: Good
 
 Subject: Counting for Animals 2
 Attempt Number: 1
-Mark: 65
+Mark: 70
 Student: Dusty the Dinosaur
 Grade: Good
 
 Subject: Digging 3
 Attempt Number: 1
-Mark: 61
+Mark: 65
 Student: Dusty the Dinosaur
-Grade: Pass
+Grade: Good
 
 Subject: Better Bouncing 4
 Attempt Number: 1
-Mark: 65
+Mark: 70
 Student: Dusty the Dinosaur
 Grade: Good
 
 Subject: Finding Friends 5
 Attempt Number: 1
-Mark: 55
+Mark: 61
 Student: Dusty the Dinosaur
 Grade: Pass
 
+Overall Grade: Pass
+
+Student Name: Iggy the Irratic
+Student ID: 369523
+Student Ability: 50
+Student Consistency: 15
+Program Name: Some Degree of Oddness
+
 Subject: Network analysis 7
 Attempt Number: 1
-Mark: 36
+Mark: 50
 Student: Iggy the Irratic
-Grade: Fail
-
-Subject: Network analysis 7
-Attempt Number: 2
-Mark: 38
-Student: Iggy the Irratic
-Grade: Fail
-
-Subject: Network analysis 7
-Attempt Number: 3
-Mark: 15
-Student: Iggy the Irratic
-Exceeded the three attempt limit with an overall fail mark. The student has been excluded from college.
+Grade: Pass
 
 Subject: Finding Friends 5
 Attempt Number: 1
-Mark: 42
+Mark: 60
 Student: Iggy the Irratic
-Grade: Fail
-
-Subject: Finding Friends 5
-Attempt Number: 2
-Mark: 43
-Student: Iggy the Irratic
-Grade: Fail
-
-Subject: Finding Friends 5
-Attempt Number: 3
-Mark: 12
-Student: Iggy the Irratic
-Exceeded the three attempt limit with an overall fail mark. The student has been excluded from college.
+Grade: Pass
 
 Subject: Digging 3
 Attempt Number: 1
-Mark: 48
+Mark: 64
 Student: Iggy the Irratic
-Grade: Fail
-
-Subject: Digging 3
-Attempt Number: 2
-Mark: 49
-Student: Iggy the Irratic
-Grade: Fail
-
-Subject: Digging 3
-Attempt Number: 3
-Mark: 21
-Student: Iggy the Irratic
-Exceeded the three attempt limit with an overall fail mark. The student has been excluded from college.
+Grade: Pass
 
 Subject: Basic Bouncing 1
 Attempt Number: 1
-Mark: 61
+Mark: 75
 Student: Iggy the Irratic
-Grade: Pass
+Grade: Good
+
+Overall Grade: Pass
+
