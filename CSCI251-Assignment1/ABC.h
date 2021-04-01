@@ -17,10 +17,11 @@
 using namespace std;
 
 int main();
-int calcMean(int studentAbility, int subjectDifficulty);
-int calcStdDeviation(int studentConsistency, int subjectVariability);
+double calcMean(int studentAbility, int subjectDifficulty);
+double calcStdDeviation(int studentConsistency, int subjectVariability);
 int calcOverallMark(int mean, int stdDeviation);
 string calcGrade(int studentMark);
+void outputGrades();
 
 enum Constants {
 	FIFTY = 50,
@@ -71,9 +72,6 @@ public:
 	int ability;
 	int consistency;
 	vector<int> subjectsList;
-
-
-
 	// Mutators
 	void setStudentName(std::string n) {
 		name = n;

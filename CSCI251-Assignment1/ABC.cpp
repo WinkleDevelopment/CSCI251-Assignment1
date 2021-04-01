@@ -8,12 +8,13 @@
 * 
 */
 
-
 #include <iostream>
 #include <fstream>
 #include <sstream>
 #include <vector>
 #include <algorithm>
+#include <random>
+#include <ctime>
 #include "ABC.h"
 
 using namespace std;
@@ -121,16 +122,16 @@ vector<Student> createStudents() {
 
 }
 
-int calcMean(int studentAbility, int subjectDifficulty) {
+double calcMean(int studentAbility, int subjectDifficulty) {
     return ((studentAbility)-(subjectDifficulty));
 }
 
-int calcStdDeviation(int studentConsistency, int subjectVariability) {
+double calcStdDeviation(int studentConsistency, int subjectVariability) {
     return ((studentConsistency)+(subjectVariability));
 }
 
 int calcOverallMark(int mean, int stdDeviation) {
-    return mean + stdDeviation * 100;
+    return mean + stdDeviation;
 }
 
 string calcGrade(int studentMark) {
@@ -148,27 +149,66 @@ string calcGrade(int studentMark) {
     }
 }
 
-int main() {
+void outputGrades() {
 
     createSubjects();
-	vector<Student> students = createStudents();
+    vector<Student> students = createStudents();
 
-	cout << endl << endl;
-	cout << "Students: " << endl;
+    fstream OutputFile;
+    OutputFile.open("Output.txt", ofstream::out | ofstream::trunc);
+    if (OutputFile.is_open()) {
 
-	for (Student student : students) {
-        cout << student.toString();
-        cout << "";
+        for (Student student : students) {
+            // Prints Student Details
+            OutputFile << student.toString();
+
+            for (int x : student.getStudentSubjects()) {
+
+                    // Gets Mean and Standard Deviation
+                    double mean = calcMean(student.getStudentAbility(), subjects[x].getSubjectDifficulty());
+                    double standardDeviation = calcStdDeviation(student.getStudentConsistency(), subjects[x].getSubjectVariability());
+                    int cnut = 1;
+
+                    // Creates Random Number
+                    default_random_engine generator(time(0));
+                    normal_distribution<double> dist(mean, standardDeviation);
+                    int mark = round((int)dist(generator));
+
+                    while (cnut <= 3)
+                    {
+                        OutputFile << "Subject: " << subjects[x].getSubjectName() << " " << x << "\nAttempt Number: " << cnut << "\nMark: " << mark << "\nStudent: " << student.getStudentName() << std::endl;
+
+                        // Check if Grade is Passable
+                        if (cnut == 3 && mark < 50) {
+
+                            OutputFile << "Overall Grade: Fail" << std::endl;
+                            OutputFile << "Exceeded the three attempt limit with an overall fail mark. The student has been excluded from college." << std::endl << std::endl;
+                            vector<int> deleteStudent = {};
+                            student.setStudentSubjects(deleteStudent);
+                        }
+                        else if (cnut <= 3 && mark >= 50) {
+                            OutputFile << "Grade: " << calcGrade(mark) << std::endl << std::endl;
+                            OutputFile << "Overall Grade: Pass" << std::endl << std::endl;
+                            cnut = 99; // Passes and Stops Loop
+                        }
+                        else {
+                            OutputFile << "Grade: Fail" << std::endl << std::endl;
+                            mark = round(dist(generator)); // Resets Number
+                        }
+                        cnut++;
+                    }
+             }
+
+         } 
+    } else {
+        cout << "File doesn't exist!";
+    }
+}
 
 
-		cout << "Subjects:" << endl << endl;
-		
-		for (int x : student.getStudentSubjects()) {
-            cout << subjects[x].toString();
-		}
+int main() {
 
-	}
-
+    outputGrades();
 	return 0;
 
 }
