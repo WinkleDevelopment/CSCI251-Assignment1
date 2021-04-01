@@ -10,29 +10,29 @@
 
 
 #include <iostream>
+#include <fstream>
 #include "main.h"
 
 using namespace std;
 
-class Subject{
-	public:
-		string name;
-		int difficulty;
-		int variability;
-};
-
-class Student {
-	public:
-		string name;
-		int studentID;
-		int ability;
-		int consistency;
-		Subject subjects[];
-};
-
-
 int main() {
 
-	
+	Subject *testSubject = testSubject("Test Subject",1,2);
+
+	Subject testlist = {*testSubject};
+
+	//Student testStudent = Student("Test Name",123456,2,3,testlist);
+
+	cout << "Student Name: " << testStudent.getStudentName() << endl;
+	cout << "Student ID: " << testStudent.getStudentName() << endl;
+	cout << "Student Ability: " << testStudent.getStudentName() << endl;
+	cout << "Student Consistency: " << testStudent.getStudentName() << endl;
+	cout << "Student Subjects: " << endl;
+	/*for (auto subject : testList)
+	{
+		 cout << testStudent.getStudentName() << endl;
+	}*/
+
+	return 0;
 
 }
